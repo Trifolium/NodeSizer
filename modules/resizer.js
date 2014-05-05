@@ -162,40 +162,40 @@ exports.changeImage = function(query, callback){
       // dux: prebacio u resize crop
       console.log(query)
       if (/x/.test(query.size)) {
-	      easyimg.rescrop(imageOptions, function(err, image){
-	        console.log("Error?: " + err);
-	        if(err){
-	          callback(err, getImagePath(query.source));
-	        }else{
-	          console.log("ext = " + getImageExt(newPath));
-	          if(getImageExt(newPath) == "png"){        
-	            easyimg.exec('optipng -o7 ' + newPath, function(err, stdout, stderr){
-	              console.log("Convert new image - optipng");
-	              callback(null, newPath);
-	            });
-	          } else {
-	            callback(null, newPath);
-	          }
-	        }
-	      });
-    	} else {
-	      easyimg.resize(imageOptions, function(err, image){
-	        console.log("Error?: " + err);
-	        if(err){
-	          callback(err, getImagePath(query.source));
-	        }else{
-	          console.log("ext = " + getImageExt(newPath));
-	          if(getImageExt(newPath) == "png"){        
-	            easyimg.exec('optipng -o7 ' + newPath, function(err, stdout, stderr){
-	              console.log("Convert new image - optipng");
-	              callback(null, newPath);
-	            });
-	          } else {
-	            callback(null, newPath);
-	          }
-	        }
-	      });
-    	}
+        easyimg.rescrop(imageOptions, function(err, image){
+          console.log("Error?: " + err);
+          if(err){
+            callback(err, getImagePath(query.source));
+          }else{
+            console.log("ext = " + getImageExt(newPath));
+            if(getImageExt(newPath) == "png"){        
+              easyimg.exec('optipng -o7 ' + newPath, function(err, stdout, stderr){
+                console.log("Convert new image - optipng");
+                callback(null, newPath);
+              });
+            } else {
+              callback(null, newPath);
+            }
+          }
+        });
+      } else {
+        easyimg.resize(imageOptions, function(err, image){
+          console.log("Error?: " + err);
+          if(err){
+            callback(err, getImagePath(query.source));
+          }else{
+            console.log("ext = " + getImageExt(newPath));
+            if(getImageExt(newPath) == "png"){        
+              easyimg.exec('optipng -o7 ' + newPath, function(err, stdout, stderr){
+                console.log("Convert new image - optipng");
+                callback(null, newPath);
+              });
+            } else {
+              callback(null, newPath);
+            }
+          }
+        });
+      }
     }
   });
 }

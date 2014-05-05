@@ -1,11 +1,32 @@
-_WORK IN PROGRESS_
---------------------
 NodeSizer 
 ==========
 *Caching ImageResizingProxy service running in node js.*
 
 Server designed to provide a nice way of requesting images on the internet at a size you want. Designed and built in Node JS.
 It's none blocking, so rolled on out on a CDN/Cloud will scale uniformly.
+
+Trifolium (@dux) added
+--------
+
+Base64 URL cache safe paths
+
+`http://localhost:8080/convert?source=http://i.imgur.com/2dD6DL5.jpg&size=350x350`
+
+works as 
+
+`http://localhost:8080/convert/300x300/aHR0cDovL2kuaW1ndXIuY29tLzJkRDZETDUuanBn.jpg`
+`http://localhost:8080/convert/300x300/Base64(source).jpg`
+
+Automatic crop if defined with and height `size=300x300`
+
+To install as
+
+> git clone https://github.com/Trifolium/NodeSizer
+
+> cd NodeSizer
+
+> sudo node app.js
+
 
 Currently supports
 ------------------
@@ -17,7 +38,10 @@ Currently supports
 * `ext=` png,jpg,gif,tiff
 * `quality=` 1-100 defaults to _80_ only works on jpeg, does a default 7 pass png optimisation.
 
-An example request looks like `http://localhost:8080/convert?size=240&source=http://yoursite.com/media/yourimage.png`
+An example request looks like 
+
+`http://localhost:8080/convert?size=240&source=http://yoursite.com/media/yourimage.png`
+
 
 **Headers**
 
