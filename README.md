@@ -15,11 +15,13 @@ Base64 URL cache safe paths
 works as 
 
 `http://localhost:8080/convert/300x300/aHR0cDovL2kuaW1ndXIuY29tLzJkRDZETDUuanBn.jpg`
-`http://localhost:8080/convert/300x300/Base64(source).jpg`
+`http://localhost:8080/convert/(size)/Base64(source).(jpg)`
 
 Automatic crop if defined with and height `size=300x300`
 
-To install as
+Resize and automatic height if only with defined (default) `size=300`
+
+To install
 
 > git clone https://github.com/Trifolium/NodeSizer
 
