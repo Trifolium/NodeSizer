@@ -1,3 +1,8 @@
+// http://localhost:8080/convert?source=http://i.imgur.com/2dD6DL5.jpg&size=350x350
+// or
+// http://localhost:8080/convert/300x300/aHR0cDovL2kuaW1ndXIuY29tLzJkRDZETDUuanBn.jpg
+// http://localhost:8080/convert/300x300/aHR0cDovL2kuaW1ndXIuY29tLzJkRDZETDUuanBn.jpg
+
 var express = require('express');
 var _ = require("underscore");
 var easyImage = require("easyimage"),
@@ -11,14 +16,20 @@ var app = express();
 app.set('title',"NodeSizer");
 
 app.get('/', function(req, res){
-  res.send('<p>Welcome to NodeSizer</p>');
+  res.send('<p>hakeru!!!p>');
 });
 
 //Converter
-app.get('/convert', function(req, res){
+app.get('/convert*', function(req, res){
 	// Using static methods:
 	var start = Date.now();
 
+  opts = req.path.split('/')
+  console.log(opts);
+  if (opts[3]) {
+		req.query.size = opts[2] 
+  	req.query.source = new Buffer(opts[3].split('.')[0], encoding='Base64').toString('ascii')
+  }
 
 	var validRequest = resize.queryHasValidParams(req.query);
 
